@@ -11,7 +11,7 @@
         result          (not-any? zero? remainders) ]
     result ))
 
-(defn all-primes*
+(defn- all-primes*
   [newest-prime     ; the most recently found (largest) prime
    primes-so-far]   ; list of all primes found so far incl newest-prime
   ; We must find the next time before we can call the next element in the lazy seq

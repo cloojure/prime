@@ -174,18 +174,37 @@ advantage.
 
 === Sieve of Eratosthenes - Algorithm 2
 
-Namespace `prime.prime-2` contains an improved version of the Sieve of Eratosthenes (SE). 
-This version does include the sqrt(N) divisor limit, which is the only change compared to
-`prime.prime-1`.  
+Namespace `prime.prime-2` contains an improved version of the SE algorithm, which does
+include the sqrt(N) divisor limit, which is the only change compared to `prime.prime-1`.  
 
 This algorithm requires an average of 22 ms to generate the first 1000 primes, about 2x
-faster than `prime.util`.  Note that this is now quite as efficient as possible, since the
+faster than `prime.util`.  Note that this is not as efficient as possible, since the
 primes are filtered below sqrt(N) on each call to `is-prime`, which represents repeated
 work that could be eliminated by a more complicated version of the algorithm.
 
-== Performance
+=== Sieve of Eratosthenes - Algorithm 3
 
-By observing the value measured for "Execution time mean", we can compare the
+Namespace `prime.prime-3` is a modified version of `prime.prime-2', where the function
+`is-prime` has been inlined into the loop to eliminate a function call.
+
+This algorithm requires an average of 23 ms to generate the first 1000 primes, nearly
+identical to `prime.prime-2` (many previous timings showed them to have identical
+execution times). Eliminating the function call has had no measurable effect.
+
+=== Sieve of Eratosthenes - Algorithm 4
+
+Namespace `prime.prime-4` is a modified version of `prime.prime-2'. It adds a function
+`all-primes` that returns an infinite lazy sequence of all primes [2 3 5 7 11...].
+
+The (internal) function `all-primes*` does lion's share of the work, generating the lazy
+sequence.  It calls itself recursively, generating another prime on each invocation.  The
+function `all-primes` provides seed values to `all-primes*` and is the external interface.
+
+This algorithm requires an average of 23 ms to generate the first 1000 primes, essentially
+identical to `prime.prime-2`.  Returning the primes as an infinite lazy sequence has had no
+measurable cost, but does support added flexibility for clients who wish to take advantage
+of it.
+
 
 == License
 
