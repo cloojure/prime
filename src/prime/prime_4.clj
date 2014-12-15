@@ -24,9 +24,11 @@
       (recur primes-so-far (+ 2 next-value)))))
 
 (defn all-primes
-  "Returns a lazy sequence of all primes"
+  "Returns an infinite lazy sequence of primes generated using the sieve of Eratosthenes."
   []
-  (all-primes* 3 [2 3]))
+  ; Note that all-primes* increments by 2 so as to examine only odd numbers.  Therefore,
+  ; we must start the iteration at 3 (or any other odd prime).
+  (cons 2 (all-primes* 3 [2 3] )))
 
 (defn get-primes
   "Returns a list of primes of the desired length"

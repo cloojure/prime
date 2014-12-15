@@ -7,8 +7,13 @@
                   [cooljure                 "0.1.18"] 
                   [criterium                "0.4.3"]
                 ]
-  :jvm-opts ["-server" "-Xms3g" "-Xms7g" ]
+  :jvm-opts ^:replace ["-client" "-Xms3g" "-Xms7g" ]
   :global-vars { *warn-on-reflection* false }
   :main ^:skip-aot prime.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  
+  :test-selectors { :default     (fn [m] (not (:perf m)))
+                    :perf        :perf
+                    :all         (constantly true) }
+)

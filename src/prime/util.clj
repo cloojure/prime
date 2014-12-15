@@ -5,6 +5,9 @@
   (:import java.lang.Math)
   (:gen-class))
 
+
+(def tst-size 1000)  ; global test size for timing tests
+
 (defn is-prime-simple 
   "Super-simple test to see if n is prime"
   [n]
@@ -19,13 +22,11 @@
   []
   (filter is-prime-simple (iterate inc 2)))
 
-(defn get-primes-simple
+(defn get-primes
   "Returns a list of primes of the desired length"
   [num-primes-wanted]
   {:pre [(pos? num-primes-wanted)]}
-  (vec
-    (take num-primes-wanted 
-      (all-primes))))
+  (vec (take num-primes-wanted (all-primes))))
 
 (defn all-prime? [coll]
   (and (map is-prime-simple coll)))

@@ -1,10 +1,16 @@
 (ns prime.core
   (:use cooljure.core)
-  (:require [criterium.core     :as crit] )
+  (:require [prime.prime-table :as table])
   (:gen-class))
 
-  ; #awt todo "Returns an infinite lazy sequence of primes generated using the sieve of Eratosthenes."
+(defn print-table 
+  [tbl]
+  {:pre [ (= (count tbl) (count (first tbl))) ] }  ; ensure square
+  (doseq [row tbl]
+    (doseq [elem row]
+      (print (format "%10d" elem)))
+    (newline)))
+
 (defn -main []
-  (println "main - enter")
-  (println "main - exit")
+  (print-table (table/gen-mult-1 5))
 )
