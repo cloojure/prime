@@ -30,6 +30,100 @@ Leiningen 2.4.3 on Java 1.8.0_11 Java HotSpot(TM) 64-Bit Server VM
      29     58     87    145    203    319    377    493    551    667    841
 ----
 
+== Unit Tests
+
+A number of unit tests were written to verify both correctness and performance of the
+code.  The basic unit tests may be invoked by:
+----
+~/work/prime > lein test
+
+lein test prime.core-test
+core-t
+
+lein test prime.prime-1-test
+
+lein test prime.prime-2-test
+
+lein test prime.prime-3-test
+
+lein test prime.prime-4-test
+
+lein test prime.util-test
+ 1 2 5 10 20 50 100 200 500 1000
+
+Ran 7 tests containing 51 assertions.
+0 failures, 0 errors.
+~/work/prime > 
+----
+
+and the performance tests may be invoked by:
+----
+~/work/prime > lein test :perf
+
+lein test prime.prime-1-test
+WARNING: Final GC required 1.9535546790893619 % of runtime
+WARNING: Final GC required 11.75992853862593 % of runtime
+Evaluation count : 12 in 6 samples of 2 calls.
+             Execution time mean : 72.581780 ms
+    Execution time std-deviation : 493.195459 µs
+   Execution time lower quantile : 72.136563 ms ( 2.5%)
+   Execution time upper quantile : 73.111425 ms (97.5%)
+                   Overhead used : 4.944198 ns
+"Elapsed time: 27047.418496 msecs"
+
+lein test prime.prime-2-test
+WARNING: Final GC required 15.15614409081964 % of runtime
+Evaluation count : 30 in 6 samples of 5 calls.
+             Execution time mean : 22.910303 ms
+    Execution time std-deviation : 143.389082 µs
+   Execution time lower quantile : 22.777744 ms ( 2.5%)
+   Execution time upper quantile : 23.060874 ms (97.5%)
+                   Overhead used : 4.944198 ns
+"Elapsed time: 7705.696678 msecs"
+
+lein test prime.prime-3-test
+WARNING: Final GC required 15.18227743806266 % of runtime
+Evaluation count : 30 in 6 samples of 5 calls.
+             Execution time mean : 23.376625 ms
+    Execution time std-deviation : 339.154629 µs
+   Execution time lower quantile : 22.841536 ms ( 2.5%)
+   Execution time upper quantile : 23.710766 ms (97.5%)
+                   Overhead used : 4.944198 ns
+"Elapsed time: 7532.990692 msecs"
+
+lein test prime.prime-4-test
+WARNING: Final GC required 16.58458393213909 % of runtime
+Evaluation count : 24 in 6 samples of 4 calls.
+             Execution time mean : 27.859362 ms
+    Execution time std-deviation : 104.767511 µs
+   Execution time lower quantile : 27.775423 ms ( 2.5%)
+   Execution time upper quantile : 28.030262 ms (97.5%)
+                   Overhead used : 4.944198 ns
+
+Found 1 outliers in 6 samples (16.6667 %)
+        low-severe       1 (16.6667 %)
+ Variance from outliers : 13.8889 % Variance is moderately inflated by outliers
+"Elapsed time: 13999.986856 msecs"
+
+lein test prime.util-test
+WARNING: Final GC required 13.63893095615554 % of runtime
+Evaluation count : 18 in 6 samples of 3 calls.
+             Execution time mean : 44.648267 ms
+    Execution time std-deviation : 440.954949 µs
+   Execution time lower quantile : 44.033734 ms ( 2.5%)
+   Execution time upper quantile : 45.137533 ms (97.5%)
+                   Overhead used : 4.944198 ns
+"Elapsed time: 7883.681977 msecs"
+
+Ran 5 tests containing 0 assertions.
+0 failures, 0 errors.
+~/work/prime > 
+----
+
+One may also invoke all tests as:
+----
+~/work/prime > lein test :all
+----
 
 == License
 
