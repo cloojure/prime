@@ -9,7 +9,7 @@
 (defn gen-mult-1
   "Generate a multiplication table of prime numbers"
   [n]
-  {:pre [(integer? n) (< 1 n)] }
+  {:pre [(integer? n) (< 0 n)] }
   (let [primes      (take n (prime/all-primes))
         products    (vec    ; force to be non-lazy
                       (for [row-val primes]
