@@ -126,7 +126,7 @@ One may also invoke all tests as:
 
 Five different strategies for generating the prime numbers were investigated.  The
 `prime.util` namespace contains a reference implementation using trial division.  The
-namespaces `prime.prime-1` through `prime.prime4` contain various implementations of the
+namespaces `prime.prime-1` through `prime.prime-4` contain various implementations of the
 sieve of Eratosthenes, modified to generate an arbitrary number of primes rather than all
 primes below a given limit.
 
@@ -138,16 +138,50 @@ if a given number is prime.  For a value N, it tests all possible divisors in th
 
 This algorithm is very simple and does not exploit the fact that all primes after 2 are
 odd.  However, it is meant to maximize simplicity rather than speed as it is a reference
-implementation used to judge the correctness and speed of other more complex algorithms.
+implementation used to judge the correctness and speed of other, more complex algorithms.
 
 The function `all-primes` returns an infinite lazy sequence of primes, while the function
 `get-primes` returns a vector of the first N primes.  A helper function `all-prime?` is
 available as an aid to testing correctness of other prime algorithms.
 
+This algorithm requires an average of 44 ms to generate the first 1000 primes.
+
 === Sieve of Eratosthenes - Algorithm 1
 
-Namespace `prime.prime-1` 
+Namespace `prime.prime-1` contains a simple version of the Sieve of Eratosthenes (SE). In it's
+original design, the SE is designed to find all primes below a given value, which is
+a different problem than finding the first N primes. Also, since SE makes extensive use of
+memory for temporary storage, one must consider that DRAM access speed may slow the
+algorithm and/or that memory exhaustion may occor.  For these reasons, we do not implement the
+SE in its traditional form but use a loop-based version instead.
 
+We seed the loop with the first prime value (2) and the next candidate prime (3).  The
+loop uses the `is-prime` funciton to test each candidate, accumulating any primes found in
+the `primes-so-far` array.  When enough primes have been found, the loop terminates.  Note
+that only odd values after 2 are tested.
+
+By using a loop, we do not require storage for non-primes like the pure SE algorithm.
+Also, the loop can continue as long as required until `num-primes-desired` are found.  The
+primary difference between the SE algorithm and simple trial division is that, for any
+prime candidate value N, only primes less than N need be considered as possible divisors
+(any non-prime integer must have smaller divisors which are prime).  As this is a baseline
+algorithm, we do not restrict possible prime divisors as less than sqrt(N).
+
+This algorithm requires an average of 70 ms to generate the first 1000 primes, about 1.6x
+slower than `prime.util`.  Although the SE algorithm is more efficient in the long
+run, we are not exploiting the sqrt(N) divisor limit which gives `prime.util` an
+advantage.
+
+=== Sieve of Eratosthenes - Algorithm 2
+
+Namespace `prime.prime-2` contains an improved version of the Sieve of Eratosthenes (SE). 
+This version does include the sqrt(N) divisor limit, which is the only change compared to
+`prime.prime-1`.  
+
+This algorithm requires an average of 22 ms to generate the first 1000 primes, about 2x
+faster than `prime.util`.  Note that this is now quite as efficient as possible, since the
+primes are filtered below sqrt(N) on each call to `is-prime`, which represents repeated
+work that could be eliminated by a more complicated version of the algorithm.
 
 == Performance
 

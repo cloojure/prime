@@ -5,9 +5,7 @@
 (defn is-prime
   [n primes-so-far]
   {:pre [(integer? n) (< 1 n)] }
-  (let [upper-bound     (Math/floor (Math/sqrt (double n)))
-        divisors        primes-so-far
-        remainders      (map #(rem n %) divisors)
+  (let [remainders      (map #(rem n %) primes-so-far)
         result          (not-any? zero? remainders) ]
     result ))
 
