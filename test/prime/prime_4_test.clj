@@ -1,7 +1,6 @@
-(ns prime.prime-2-test
-  (:use clojure.test
-        prime.util
-        prime.prime-2)
+(ns prime.prime-4-test
+  (:use prime.prime-4
+        clojure.test)
   (:require [criterium.core     :as crit]
             [prime.util         :as util] ))
 

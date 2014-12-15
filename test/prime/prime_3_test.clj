@@ -2,7 +2,7 @@
   (:use clojure.test
         prime.prime-3)
   (:require [criterium.core     :as crit]
-            [prime.util         :as util]))
+            [prime.util         :as util] ))
 
 (deftest timing
   (let [tst-fn      get-primes
