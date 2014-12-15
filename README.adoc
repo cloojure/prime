@@ -1,6 +1,6 @@
 = Primes Multiplication Table
 
-=== Funding Circle Coding Challenge
+===== Funding Circle Coding Challenge
 
 
 == Overview
