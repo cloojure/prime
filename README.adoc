@@ -1,0 +1,41 @@
+= Primes Multiplication Table
+
+=== Funding Circle Coding Challenge
+
+
+== Overview
+
+This project is the solution to the Funding Circle Coding Challenge.  The goal is to
+produce a multiplication table for the first 10 prime numbers, formatted nicely to stdout.
+The program is to be run from the command line.
+
+This solution is written in Clojure, and assumes you have a current version of Leiningen
+(2.3+) installed.  It is also assumed a current version of Java (1.8) and Clojure (1.6)
+are properly configured on your system.
+
+If everything is configured correctly, you should be able to see results like the
+following:
+----
+~/work/prime > lein --version
+Leiningen 2.4.3 on Java 1.8.0_11 Java HotSpot(TM) 64-Bit Server VM
+~/work/prime > lein run
+
+             2      3      5      7     11     13     17     19     23     29
+      2      4      6     10     14     22     26     34     38     46     58
+      3      6      9     15     21     33     39     51     57     69     87
+      5     10     15     25     35     55     65     85     95    115    145
+      7     14     21     35     49     77     91    119    133    161    203
+     11     22     33     55     77    121    143    187    209    253    319
+     13     26     39     65     91    143    169    221    247    299    377
+     17     34     51     85    119    187    221    289    323    391    493
+     19     38     57     95    133    209    247    323    361    437    551
+     23     46     69    115    161    253    299    391    437    529    667
+     29     58     87    145    203    319    377    493    551    667    841
+----
+
+
+== License
+
+Copyright © 2014 Alan Thompson. 
+
+Distributed under the Eclipse Public License, the same as Clojure.
