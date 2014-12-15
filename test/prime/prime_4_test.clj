@@ -8,5 +8,5 @@
   (is (= (get-primes util/tst-size) (util/get-primes util/tst-size))))
 
 (deftest ^:perf timing
-  (time (crit/quick-bench (get-primes util/tst-size))))
+  (time (crit/bench (get-primes util/tst-size))))
 

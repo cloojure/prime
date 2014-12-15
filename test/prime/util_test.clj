@@ -35,4 +35,4 @@
   (newline))
 
 (deftest ^:perf timing
-  (time (crit/quick-bench (get-primes tst-size))))
+  (time (crit/bench (get-primes tst-size))))
