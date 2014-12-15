@@ -24,5 +24,5 @@
   (newline))
 
 (defn -main []
-  (print-table (table/gen-mult-1 15))
+  (print-table (table/gen-mult-1 10))
 )
