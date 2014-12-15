@@ -3,6 +3,9 @@
   (:require [prime.prime-4 :as prime])
   (:gen-class))
 
+; In this function, we do not exploit the symmetry of the table.  We assert (without
+; proof) that any caching strategy (e.g. clojure.core/memoize) will consume much more than
+; 1 multiply of time and more than Long.BYTES storage, per cell.
 (defn gen-mult-1
   "Generate a multiplication table of prime numbers"
   [n]
