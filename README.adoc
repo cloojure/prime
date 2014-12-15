@@ -35,7 +35,6 @@ Leiningen 2.4.3 on Java 1.8.0_11 Java HotSpot(TM) 64-Bit Server VM
 The program accepts an optional size parameter in the interval [1..25] as such:
 ----
 ~/work/prime > lein run 5
-size: 5
 
              2      3      5      7     11
       2      4      6     10     14     22

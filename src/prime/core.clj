@@ -28,7 +28,6 @@
   ( [] (-main "10"))
   ( [arg]
     (let [size (parse/parse-int arg)]
-      (println "size:" size) 
       (if (<= 1 size 25)
         (print-table (table/gen-mult-1 size))
         (throw (IllegalArgumentException.  (str (format "error: size %d out of range" size)))))))
