@@ -30,6 +30,23 @@ Leiningen 2.4.3 on Java 1.8.0_11 Java HotSpot(TM) 64-Bit Server VM
      29     58     87    145    203    319    377    493    551    667    841
 ----
 
+== Invocation Options
+
+The program accepts an optional size parameter in the interval [1..25] as such:
+----
+~/work/prime > lein run 5
+size: 5
+
+             2      3      5      7     11
+      2      4      6     10     14     22
+      3      6      9     15     21     33
+      5     10     15     25     35     55
+      7     14     21     35     49     77
+     11     22     33     55     77    121
+
+~/work/prime > 
+----
+
 == Unit Tests
 
 A number of unit tests were written to verify both correctness and performance of the
