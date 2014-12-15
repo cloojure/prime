@@ -1,8 +1,5 @@
 = Primes Multiplication Table
 
-=== Funding Circle Coding Challenge
-
-
 == Overview
 
 This project is the solution to the Funding Circle Coding Challenge.  The goal is to
