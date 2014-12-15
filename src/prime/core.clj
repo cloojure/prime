@@ -4,13 +4,25 @@
   (:gen-class))
 
 (defn print-table 
-  [tbl]
-  {:pre [ (= (count tbl) (count (first tbl))) ] }  ; ensure square
-  (doseq [row tbl]
-    (doseq [elem row]
-      (print (format "%10d" elem)))
-    (newline)))
+  [{:keys [primes products]}]
+  {:pre [ (= (count primes) (count products) (count (first products)) ) ] }  ; ensure congruent
+
+  ; print first row - just primes
+  (newline)
+  (print (format "%7s" \space))    ; blank spot in UL corner
+  (doseq [elem primes]
+    (print (format "%7d" elem)))   ; print primes
+  (newline)
+
+  ; print other rows
+  (doseq [ii (range (count primes))
+            :let [row (nth products ii)] ]
+    (do (print (format "%7d" (nth primes ii)))  ; print prime
+        (doseq [elem row]
+          (print (format "%7d" elem))))        ; print products
+    (newline))
+  (newline))
 
 (defn -main []
-  (print-table (table/gen-mult-1 5))
+  (print-table (table/gen-mult-1 10))
 )
