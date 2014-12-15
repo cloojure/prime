@@ -6,6 +6,3 @@
   (:import java.lang.Math)
   (:gen-class))
 
-
-(deftest core-t
-  (println "core-t"))

@@ -37,9 +37,6 @@ code.  The basic unit tests may be invoked by:
 ----
 ~/work/prime > lein test
 
-lein test prime.core-test
-core-t
-
 lein test prime.prime-1-test
 
 lein test prime.prime-2-test
